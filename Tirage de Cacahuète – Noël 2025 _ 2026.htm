@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tirage de Cacahuète – Noël 2025 / 2026</title>
+  <style>
+    :root {
+      --rouge-noel: #b3202a;
+      --vert-noel: #1d6b3a;
+      --or-noel: #f4c542;
+      --fond: #fdf7f2;
+      --texte: #2c2c2c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #ffffff 0, var(--fond) 55%);
+      color: var(--texte);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      width: 100%;
+      max-width: 520px;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 22px 18px 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+      position: relative;
+      overflow: hidden;
+    }
+    .guirlande {
+      position: absolute;
+      top: 0;
+      left: -10%;
+      width: 120%;
+      height: 46px;
+      background: linear-gradient(135deg, var(--vert-noel), var(--rouge-noel));
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 10px;
+      padding-bottom: 4px;
+    }
+    .guirlande span {
+      width: 10px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--or-noel);
+      box-shadow: 0 0 6px rgba(0,0,0,0.25);
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin: 54px 0 6px;
+      text-align: center;
+      color: var(--rouge-noel);
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+    .note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 18px;
+    }
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.08s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    #btn-tirer {
+      background: linear-gradient(135deg, var(--rouge-noel), #ff5f45);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(179,32,42,0.45);
+    }
+    #btn-tirer:active {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+      filter: brightness(0.98);
+    }
+    #btn-reset {
+      background: #f2efe9;
+      color: #444;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    #btn-reset:active {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    #btn-idees {
+      background: #ffffff;
+      color: var(--vert-noel);
+      border: 1px dashed var(--vert-noel);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    #btn-idees:active {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+    .result {
+      text-align: center;
+      margin-top: 4px;
+    }
+    .nom {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--vert-noel);
+    }
+    .mission-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: #777;
+      margin-bottom: 4px;
+    }
+    .mission {
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+    }
+    .exemple {
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 4px;
+    }
+    .reste {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 4px;
+    }
+    .info {
+      font-size: 0.75rem;
+      color: #999;
+      text-align: center;
+      margin-top: 12px;
+    }
+    .idees-wrapper {
+      margin-top: 12px;
+      border-top: 1px dashed #ddd;
+      padding-top: 8px;
+      display: none;
+      max-height: 220px;
+      overflow-y: auto;
+      font-size: 0.82rem;
+    }
+    .idees-wrapper h2 {
+      font-size: 0.9rem;
+      margin: 0 0 4px;
+      text-align: left;
+      color: #444;
+    }
+    .idees-wrapper ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      text-align: left;
+    }
+    .idees-wrapper li {
+      margin-bottom: 4px;
+    }
+    .idees-wrapper span.mission-texte {
+      font-weight: 600;
+    }
+    .idees-wrapper span.mission-exemple {
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="guirlande">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <h1>Tirage de Cacahuète</h1>
+    <p class="subtitle">Cliquez pour tirer un nom au hasard. Une fois tiré, le nom disparaît de la liste.</p>
+    <p class="note">Les exemples sont indicatifs : libre cours à votre imagination.</p>
+
+    <div class="btn-row">
+      <button id="btn-tirer">🎄 Tirer une cacahuète</button>
+      <button id="btn-reset">🔄 Réinitialiser</button>
+      <button id="btn-idees">💡 Voir les idées de cadeaux</button>
+    </div>
+
+    <div id="result" class="result">
+      <div class="nom">---</div>
+      <div class="mission-label">mission cadeau</div>
+      <div class="mission">Cliquez sur “Tirer une cacahuète” pour commencer.</div>
+      <div class="exemple"></div>
+      <div class="reste"></div>
+    </div>
+
+    <div class="idees-wrapper" id="liste-idees">
+      <h2>Idées de missions & cadeaux (exemples)</h2>
+      <ul id="liste-idees-ul"></ul>
+    </div>
+
+    <div class="info">
+      astuce : ouvrez cette page sur un téléphone et faites tourner le tirage au milieu de la table.
+    </div>
+  </div>
+
+  <script>
+    const nomsInitiaux = [
+      "ingrid",
+      "laura",
+      "justine",
+      "sébastien",
+      "maude",
+      "duygu",
+      "gabriel",
+      "bastien",
+      "anne-catherine",
+      "géraldine"
+    ];
+
+    let nomsRestants = [...nomsInitiaux];
+
+    const missions = [
+      {
+        texte: "un super-pouvoir anti-fatigue pour survivre à décembre 2025 et entrer vivant en 2026.",
+        exemple: "exemple : mini tube de vitamine C ou petit snack énergisant."
+      },
+      {
+        texte: "une potion magique de courage pour attaquer 2026.",
+        exemple: "exemple : petit sachet de thé ou infusion douce (camomille, menthe, vanille…)."
+      },
+      {
+        texte: "un objet qui donne +10 points d’énergie quand on attaque janvier 2026.",
+        exemple: "exemple : petit porte-clés lumineux simple."
+      },
+      {
+        texte: "un mini-talisman contre les réunions qui s’éternisent en 2026.",
+        exemple: "exemple : mini sablier (30 secondes ou 1 minute), joli, posé sur le bureau."
+      },
+      {
+        texte: "un kit mini-survie pour la fin 2025 (valable aussi en début 2026).",
+        exemple: "exemple : paquet de mouchoirs décoré + mini chocolat noir."
+      },
+      {
+        texte: "une recharge turbo pour les journées bien remplies de 2026.",
+        exemple: "exemple : petite boisson chaude instantanée (infusion, chai, chocolat simple)."
+      },
+      {
+        texte: "un bouclier anti-stress pour protéger le coin bureau en 2026.",
+        exemple: "exemple : balle anti-stress simple et jolie."
+      },
+      {
+        texte: "une babiole anti-grisaille pour les matins difficiles.",
+        exemple: "exemple : porte-clés coloré mais sobre."
+      },
+      {
+        texte: "un objet courage +1 à garder sur soi.",
+        exemple: "exemple : baume à lèvres neutre, petit à glisser dans un sac."
+      },
+      {
+        texte: "un objet mignon mais adulte qui dit « tu vas gérer 2026 ».",
+        exemple: "exemple : petit carnet avec une couverture discrètement jolie."
+      },
+      {
+        texte: "un artefact anti-morosité pour les premiers jours de janvier.",
+        exemple: "exemple : mini bougie parfum très léger (vanille, coton, thé)."
+      },
+      {
+        texte: "une friandise qui met le moral en mode ‘dessin animé’ pour l’entrée en 2026.",
+        exemple: "exemple : petit paquet de biscuits ou petite barre de chocolat."
+      },
+      {
+        texte: "un mini-compagnon de bureau pour tenir le choc du premier trimestre 2026.",
+        exemple: "exemple : mini plante (succulente) ou petite figurine en bois."
+      },
+      {
+        texte: "un gadget qui active le sort anti-ras-le-bol 2026.",
+        exemple: "exemple : fidget cube (petit cube anti-stress avec boutons, roulettes et interrupteurs)."
+      },
+      {
+        texte: "un cadeau qui libère des paillettes imaginaires pour booster 2026.",
+        exemple: "exemple : stylo légèrement décoré (doré, argenté ou avec un petit détail brillant)."
+      },
+      {
+        texte: "un sort anti-procrastination pour bien démarrer 2026.",
+        exemple: "exemple : petit bloc-notes ‘à faire / fait’."
+      },
+      {
+        texte: "une arme secrète contre les premiers jours 2026 trop compliqués.",
+        exemple: "exemple : petit porte-bonheur discret (pierre polie, mini galet)."
+      },
+      {
+        texte: "un booster de bonne humeur pour les retours de congés.",
+        exemple: "exemple : petite carte ou autocollant discret avec un message positif."
+      },
+      {
+        texte: "un remède cartoon contre les journées qui n’en finissent pas.",
+        exemple: "exemple : sachet d’infusion relax (verveine, tilleul, etc.)."
+      },
+      {
+        texte: "un compagnon magique pour affronter 2026 avec style.",
+        exemple: "exemple : petite figurine décorative (style bois, scandinave, sobre)."
+      },
+      {
+        texte: "un anti-grisaille à utiliser dès le mois de janvier.",
+        exemple: "exemple : joli marque-page ou petite carte à garder dans un agenda."
+      },
+      {
+        texte: "un gadget qui aide à survivre aux matins difficiles de 2026.",
+        exemple: "exemple : petite douceur emballée (biscuit, mini snack)."
+      },
+      {
+        texte: "une potion anti-stress homologuée pour 2026.",
+        exemple: "exemple : sachet de tisane détente (camomille, tilleul, mélisse…)."
+      },
+      {
+        texte: "un totem porte-courage pour toute l’année 2026.",
+        exemple: "exemple : galet ou pierre polie avec un mot ou un symbole."
+      },
+      {
+        texte: "un générateur de pensées positives spécial ‘nouveau départ’.",
+        exemple: "exemple : mini carnet pour noter des petites choses positives."
+      },
+      {
+        texte: "un objet magique qui donne quelques minutes de patience en plus.",
+        exemple: "exemple : fidget cube ou petit objet à manipuler pour se détendre."
+      },
+      {
+        texte: "un doudou de bureau pour affronter la tempête de mails.",
+        exemple: "exemple : squishy (petit objet en mousse souple à écraser, anti-stress)."
+      },
+      {
+        texte: "un mini-objet qui apporte une joie discrète mais durable en 2026.",
+        exemple: "exemple : stylo de couleur douce ou pastel."
+      },
+      {
+        texte: "un enchantement contre les agendas déjà trop remplis.",
+        exemple: "exemple : mini calendrier illustré ou petite carte ‘pause’ à garder sous la main."
+      },
+      {
+        texte: "une capsule de courage à ouvrir au premier coup de blues 2026.",
+        exemple: "exemple : petit sachet de bonbons ou de douceurs à garder fermé jusqu’au jour J."
+      }
+    ];
+
+    const nomEl = document.querySelector('.nom');
+    const missionEl = document.querySelector('.mission');
+    const exempleEl = document.querySelector('.exemple');
+    const resteEl = document.querySelector('.reste');
+    const listeIdeesWrapper = document.getElementById('liste-idees');
+    const listeIdeesUl = document.getElementById('liste-idees-ul');
+
+    function remplirListeIdees() {
+      listeIdeesUl.innerHTML = "";
+      missions.forEach((m, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = "<span class='mission-texte'>" + (index + 1) + ". " + m.texte + "</span> <br><span class='mission-exemple'>" + m.exemple + "</span>";
+        listeIdeesUl.appendChild(li);
+      });
+    }
+
+    function tirer() {
+      if (nomsRestants.length === 0) {
+        nomEl.textContent = "Fin du tirage";
+        missionEl.textContent = "Toutes les cacahuètes ont été distribuées. Joyeuses fêtes et bon courage pour 2026 !";
+        exempleEl.textContent = "";
+        resteEl.textContent = "";
+        return;
+      }
+      const iNom = Math.floor(Math.random() * nomsRestants.length);
+      const nom = nomsRestants[iNom];
+      nomsRestants.splice(iNom, 1);
+
+      const iMission = Math.floor(Math.random() * missions.length);
+      const missionObj = missions[iMission];
+
+      nomEl.textContent = nom;
+      missionEl.textContent = "Ta mission : trouver " + missionObj.texte;
+      exempleEl.textContent = missionObj.exemple + " (ce n’est qu’un exemple, fais comme tu le sens).";
+      resteEl.textContent = nomsRestants.length > 0
+        ? nomsRestants.length + " cacahuète(s) restante(s) à tirer."
+        : "Il n'y a plus de noms à tirer.";
+    }
+
+    function reset() {
+      nomsRestants = [...nomsInitiaux];
+      nomEl.textContent = "---";
+      missionEl.textContent = "Cliquez sur “Tirer une cacahuète” pour commencer.";
+      exempleEl.textContent = "";
+      resteEl.textContent = "";
+    }
+
+    function toggleIdees() {
+      if (listeIdeesWrapper.style.display === "block") {
+        listeIdeesWrapper.style.display = "none";
+      } else {
+        remplirListeIdees();
+        listeIdeesWrapper.style.display = "block";
+      }
+    }
+
+    document.getElementById('btn-tirer').addEventListener('click', tirer);
+    document.getElementById('btn-reset').addEventListener('click', reset);
+    document.getElementById('btn-idees').addEventListener('click', toggleIdees);
+  </script>
+</body>
+</html>
